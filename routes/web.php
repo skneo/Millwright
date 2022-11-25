@@ -6,6 +6,7 @@ use App\Http\Controllers\MachineController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MwController;
 use App\Http\Controllers\FaultController;
+use App\Http\Controllers\SpareController;
 
 Route::get('/', function () {
     $board = file_get_contents('noticeboard.txt');
@@ -39,4 +40,16 @@ Route::get('/edit-article/{title}/{id}', [ArticleController::class, 'edit']);
 Route::post('/update-article/{id}', [ArticleController::class, 'update']);
 Route::get('/articles/', [ArticleController::class, 'search']);
 //faults routes
-Route::get('/faults/{machine}', [FaultController::class, 'all_faults']);
+Route::get('/faults', [FaultController::class, 'machine_faults']);
+Route::get('/all-faults', [FaultController::class, 'all_faults']);
+Route::get('/new-fault/{machine}', [FaultController::class, 'new']);
+Route::post('/save-fault/{machine}', [FaultController::class, 'save']);
+Route::get('/edit-fault/{machine}/{id}', [FaultController::class, 'edit']);
+Route::post('/update-fault/{id}', [FaultController::class, 'update']);
+//spares routes
+Route::get('/spares/{category}', [SpareController::class, 'spares']);
+Route::get('/add-spare', [SpareController::class, 'new_spare']);
+Route::post('/save-spare', [SpareController::class, 'save']);
+Route::get('/edit-spare/{id}', [SpareController::class, 'edit']);
+Route::post('/update-spare/{id}', [SpareController::class, 'update']);
+// Route::view('/add-spare', 'add-spare');

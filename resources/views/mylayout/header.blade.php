@@ -11,13 +11,13 @@
                     <a class='nav-link active ' aria-current='page' href='/'>Home</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link active ' aria-current='page' href='/machines'>Assets</a>
+                    <a class='nav-link active ' aria-current='page' href='/machines'>M&Ps</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link active ' aria-current='page' href='/faults'>Faults</a>
+                    <a class='nav-link active ' aria-current='page' href='/all-faults'>Faults</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link active ' aria-current='page' href='/spares'>Spares</a>
+                    <a class='nav-link active ' aria-current='page' href='/spares/all'>Spares</a>
                 </li>
                 
                 <li class='nav-item'>
@@ -39,10 +39,10 @@
             </ul>
             <form class="d-flex " metho='get' action='/articles/'>
                 <input class="form-control me-2" name='search' type="search" placeholder="Search articles" aria-label="Search">
-                <button class="btn btn-outline-primary me-2" type="submit">Search</button>
+                <button class="btn btn-primary me-2" type="submit">Search</button>
             </form>
             <div class='btn-group '>
-                <button id='userMenu' type='button' class='btn btn-success dropdown-toggle ' data-bs-toggle='dropdown' aria-expanded='false' value=''>
+                <button id='userMenu' type='button' class='btn btn-primary dropdown-toggle ' data-bs-toggle='dropdown' aria-expanded='false' value=''>
                 Millwright
                 </button>
                 <ul class='dropdown-menu dropdown-menu-lg-end'>

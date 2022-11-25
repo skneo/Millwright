@@ -7,8 +7,8 @@
     <div class="row  mt-2">
         
         <div class="col-md-9 border py-3 ">
-            <a href="/faults/{{$assetName}}" class="btn btn-outline-primary btn-sm ">Faults Record</a>
-            <a href="/spares/{{$assetName}}/{{$id}}" class="btn btn-outline-primary btn-sm mx-2">Spares</a>
+            <a href="/faults?machine={{$assetName}}" class="btn btn-outline-primary btn-sm ">Faults Record</a>
+            <a href="/spares/{{$assetName}}" class="btn btn-outline-primary btn-sm mx-2">Spares</a>
             <form class="d-flex mt-2" metho='get' action='/articles/'>
                 <input class="form-control me-2" name='search' type="search" placeholder="Search articles" aria-label="Search">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
