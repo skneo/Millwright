@@ -7,7 +7,7 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
-    public function newArticle($category)
+    function new($category)
     {
         $edit = 0;
         $page_heading = 'New Article';
@@ -15,7 +15,7 @@ class ArticleController extends Controller
         $data = compact('edit', 'submit_url', 'page_heading', 'category');
         return view('articleForm')->with($data);
     }
-    public function saveArticle(Request $request)
+    function save(Request $request)
     {
         $request->validate(
             [
@@ -30,13 +30,19 @@ class ArticleController extends Controller
         $article->body = $request['body'];
 
         $article->save();
-        $request->session()->flash('success', $article->title . ' saved!');
-        return redirect('/machines');
+        $request->session()->flash('success', $article->title . ' saved');
+        return redirect('/all-articles');
     }
-    public function allArticles()
+    function all($category = null)
     {
-        $articles = Article::all();
-        $data = compact('articles');
+        if ($category) {
+            $articles = Article::where('category', $category)->latest()->get(['id', 'title']);
+            $title = "All articles on $category";
+        } else {
+            $articles = Article::latest()->get();
+            $title = "All articles";
+        }
+        $data = compact('articles', 'title');
         return view('allArticles')->with($data);
     }
     function showArticle($title, $id)
@@ -45,7 +51,7 @@ class ArticleController extends Controller
         $data = compact('article');
         return  view('articlePage')->with($data);
     }
-    public function edit(Request $request, $title, $id)
+    function edit(Request $request, $title, $id)
     {
         $article = Article::find($id);
         if (!is_null($article)) {
@@ -55,11 +61,11 @@ class ArticleController extends Controller
             $data = compact('article', 'page_heading', 'edit', 'submit_url');
             return view('articleForm')->with($data);
         } else {
-            $request->session()->flash('danger', 'No product found with id ' . $id);
+            $request->session()->flash('danger', 'No article found with id ' . $id);
         }
         return redirect('/all-articles');
     }
-    public function update(Request $request, $id)
+    function update(Request $request, $id)
     {
         $article = Article::find($id);
         $request->validate(
@@ -74,14 +80,14 @@ class ArticleController extends Controller
         $article->body = $request['body'];
 
         $article->save();
-        $request->session()->flash('success', $article->title . ' updated!');
+        $request->session()->flash('success', $article->title . ' updated');
         return redirect("/article/" . str_replace(' ', '-', $article->title) . "/$article->id");
     }
     function search(Request $req)
     {
         $search = $req['search'];
         if (strlen($search) < 2) {
-            $req->session()->flash('danger', 'Search keyword must be greater than or equal to 2 characters!');
+            $req->session()->flash('danger', 'Search keyword must be greater than or equal to 2 characters');
             return redirect()->back();
         }
         $articles = Article::query()

@@ -29,7 +29,7 @@
         </div>
         <div class='mb-3'>
             <label for='rectification' class='form-label float-start'>Rectification</label>
-            <textarea name="rectification" class='form-control' id="rectification" cols="30" rows="5">@if($edit){{$fault->rectification}}@else{{old('rectification')}}@endif</textarea>
+            <textarea name="rectification" class='form-control' id="rectification" cols="30" rows="3">@if($edit){{$fault->rectification}}@else{{old('rectification')}}@endif</textarea>
             {{-- <input type='text' class='form-control' id='rectification' name='rectification' @if($edit) value="{{$fault->rectification}}" @else value="{{old('rectification')}}" @endif> --}}
             <small class='form-text text-danger'>@error('rectification') {{$message}} @enderror</small>
         </div>

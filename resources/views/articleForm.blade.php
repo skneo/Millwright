@@ -9,7 +9,7 @@
         @csrf
         <div class='mb-3'>
             <label for='category' class='form-label float-start'>Category</label>
-            <input type='text' required class='form-control' id='category' name='category' @if($edit) value="{{$article->category}}" @elseif($category) value="{{$category}}" @else value="{{old('category')}}" @endif>
+            <input type='text' readonly required class='form-control' id='category' name='category' @if($edit) value="{{$article->category}}" @elseif($category) value="{{$category}}" @else value="{{old('category')}}" @endif>
             <small class='form-text text-danger'>@error('category'){{$message}} @enderror </small>
         </div>
         <div class='mb-3'>

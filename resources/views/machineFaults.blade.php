@@ -17,7 +17,6 @@
                     <th>Rectification</th>
                     <th>Spares Used</th>
                     <th>Remark</th>
-                    <th>Entry Done By</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -25,7 +24,6 @@
                 @foreach ($faults as $fault)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    {{-- <td><a href="/asset-introduction/{{str_replace(' ','-',$fault->name)}}/{{$fault->id}}">{{$fault->name}}</a></td> --}}
                     <td>{{$fault->occurred_on}}</td>
                     {{-- <td>{{$fault->machine}}</td> --}}
                     <td>{{$fault->sub_category}}</td>
@@ -34,7 +32,6 @@
                     <td>{{$fault->rectification}}</td>
                     <td>{{$fault->spares_used}}</td>
                     <td>{{$fault->remark}}</td>
-                    <td>{{$fault->entry_done_by}}</td>
                     <td>
                         <a href="/edit-fault/{{$machine}}/{{$fault->id}}" class="btn btn-primary btn-sm">Edit</a>
                         {{-- <a href="/delete-machine/{{$machine->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete {{$machine->name}} ?')">Delete</a> --}}

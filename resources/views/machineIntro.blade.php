@@ -7,6 +7,7 @@
         <div class="col-md-9 border py-3 ">
             <a href="/faults?machine={{$machineName}}" class="btn btn-outline-primary btn-sm ">Faults</a>
             <a href="/spares/{{$machineName}}" class="btn btn-outline-primary btn-sm mx-2">Spares</a>
+            <a href="/all-articles/{{$machineName}}" class="btn btn-outline-primary btn-sm ">Articles</a>
             <form class="d-flex mt-2" metho='get' action='/articles/'>
                 <input class="form-control me-2" name='search' type="search" placeholder="Search articles" aria-label="Search">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -16,7 +17,7 @@
             {!!$intro!!}
         </div>
         <div class="col-md-3 border py-3">
-            <h5>Other articles on {{$machineName}}</h5>
+            <h5>Latest articles on {{$machineName}}</h5>
             <a href="/new-article/{{$machineName}}" class="btn btn-outline-primary btn-sm">New</a><br>
             <ul>
             @foreach ($articles as $article)

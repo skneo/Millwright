@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('name');
             $table->string('code');
-            $table->string('balance');
+            $table->integer('balance');
             $table->string('unit');
             $table->string('location');
             $table->string('remark');

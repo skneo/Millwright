@@ -99,7 +99,7 @@ class MachineController extends Controller
         $machine = Machine::find($id);
         $machineName = $machine->name;
         $intro = $machine->introduction;
-        $articles = Article::where('category', $machineName)->get(['id', 'title']);
+        $articles = Article::where('category', $machineName)->latest()->take(10)->get(['id', 'title']);
         $data = compact('intro', 'machineName', 'id', 'articles');
         return view('machineIntro')->with($data);
     }

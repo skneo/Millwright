@@ -32,16 +32,16 @@ Route::get('/machine-introduction/{machineName}/{id}', [MachineController::class
 Route::get('/edit-introduction/{machineName}/{id}', [MachineController::class, 'editIntro']);
 Route::post('/update-introduction/{id}', [MachineController::class, 'updateIntro']);
 //article routes
-Route::get('/new-article/{category}', [ArticleController::class, 'newArticle']);
-Route::post('/save-article', [ArticleController::class, 'saveArticle']);
-Route::get('/all-articles', [ArticleController::class, 'allArticles']);
+Route::get('/new-article/{category}', [ArticleController::class, 'new']);
+Route::post('/save-article', [ArticleController::class, 'save']);
+Route::get('/all-articles/{category?}', [ArticleController::class, 'all']);
 Route::get('/article/{title}/{id}', [ArticleController::class, 'showArticle']);
 Route::get('/edit-article/{title}/{id}', [ArticleController::class, 'edit']);
 Route::post('/update-article/{id}', [ArticleController::class, 'update']);
 Route::get('/articles/', [ArticleController::class, 'search']);
 //faults routes
-Route::get('/faults', [FaultController::class, 'machine_faults']);
-Route::get('/all-faults', [FaultController::class, 'all_faults']);
+Route::get('/faults', [FaultController::class, 'machineFaults']); //machine name is passed through get method
+Route::get('/all-faults', [FaultController::class, 'allFaults']);
 Route::get('/new-fault/{machine}', [FaultController::class, 'new']);
 Route::post('/save-fault/{machine}', [FaultController::class, 'save']);
 Route::get('/edit-fault/{machine}/{id}', [FaultController::class, 'edit']);
