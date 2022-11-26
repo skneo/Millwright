@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('rectification');
             $table->string('spares_used');
             $table->string('remark');
-            $table->string('entry_done_by');
             $table->timestamps();
         });
     }

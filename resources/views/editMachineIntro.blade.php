@@ -1,22 +1,21 @@
 @extends('mylayout.main')
-@section('title') Edit {{$assetName}} Introduction @endsection
+@section('title') Edit {{$machineName}} Introduction @endsection
 @section('body')
 <div class="container my-3">
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <h4>Edit introduction of {{$assetName}}</h4>
+    <h4>Edit introduction of {{$machineName}}</h4>
     <form method='POST' action='/update-introduction/{{$id}}'>
         @csrf
         <div class='mb-3'>
             {{-- <label for='refData' class='form-label '>Referance data</label><br> --}}
-            <textarea class="form-control" name="assetIntro" id="assetIntro" cols="30" rows="5">{{$intro}}</textarea>
+            <textarea class="form-control" name="machineIntro" id="machineIntro" cols="30" rows="5">{{$intro}}</textarea>
         </div>
         <button type='submit' class='btn btn-primary'>Submit</button>
     </form>
     <script>
         var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
         tinymce.init({
-            selector: 'textarea#assetIntro',
+            selector: 'textarea#machineIntro',
             plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
             imagetools_cors_hosts: ['picsum.photos'],
             menubar: 'file edit view insert format tools table help',

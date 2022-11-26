@@ -1,7 +1,6 @@
 <ul>
 <li>Follow Covid Protocol</li>
 <li>Wear Mask</li>
-<li>Reach office before 09:45</li>
 </ul>
 <h4>Leaves</h4>
 <table class="table" style="height: 58.7814px; width: 99.0758%;">
@@ -26,3 +25,4 @@
 </tr>
 </tbody>
 </table>
+<p>&nbsp;</p>

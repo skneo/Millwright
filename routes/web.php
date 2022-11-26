@@ -16,20 +16,20 @@ Route::get('/', function () {
 Route::get('/edit-board', [MwController::class, 'editBoard']);
 Route::post('/update-board', [MwController::class, 'update']);
 //employee routes
-Route::get('/add-employee', [EmployeeController::class, 'show_form']);
-Route::post('/add-employee', [EmployeeController::class, 'add_employee']);
-Route::get('/employees', [EmployeeController::class, 'all_employees']);
+Route::get('/add-employee', [EmployeeController::class, 'new']);
+Route::post('/save-employee', [EmployeeController::class, 'save']);
+Route::get('/employees', [EmployeeController::class, 'all']);
 Route::get('/edit-employee/{id}', [EmployeeController::class, 'edit']);
 Route::post('/update-employee/{id}', [EmployeeController::class, 'update']);
 Route::get('/delete-employee/{id}', [EmployeeController::class, 'delete']);
 //machines routes
-Route::get('/machines', [MachineController::class, 'all_machines']);
-Route::get('/add-machine', [MachineController::class, 'show_form']);
-Route::post('/add-machine', [MachineController::class, 'add_machine']);
+Route::get('/machines', [MachineController::class, 'all']);
+Route::get('/add-machine', [MachineController::class, 'new']);
+Route::post('/save-machine', [MachineController::class, 'save']);
 Route::get('/edit-machine/{id}', [MachineController::class, 'edit']);
 Route::post('/update-machine/{id}', [MachineController::class, 'update']);
-Route::get('/asset-introduction/{assetName}/{id}', [MachineController::class, 'introduction']);
-Route::get('/edit-introduction/{assetName}/{id}', [MachineController::class, 'editIntro']);
+Route::get('/machine-introduction/{machineName}/{id}', [MachineController::class, 'introduction']);
+Route::get('/edit-introduction/{machineName}/{id}', [MachineController::class, 'editIntro']);
 Route::post('/update-introduction/{id}', [MachineController::class, 'updateIntro']);
 //article routes
 Route::get('/new-article/{category}', [ArticleController::class, 'newArticle']);
@@ -52,4 +52,4 @@ Route::get('/add-spare', [SpareController::class, 'new_spare']);
 Route::post('/save-spare', [SpareController::class, 'save']);
 Route::get('/edit-spare/{id}', [SpareController::class, 'edit']);
 Route::post('/update-spare/{id}', [SpareController::class, 'update']);
-// Route::view('/add-spare', 'add-spare');
+Route::get('/delete-spare/{id}', [SpareController::class, 'delete']);

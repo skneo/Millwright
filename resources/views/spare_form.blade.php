@@ -34,7 +34,7 @@
         </div> 
         <div class='mb-3'>
             <label for='balance' class='form-label float-start'>Balance</label>
-            <input type='number' class='form-control' @if($edit) readonly @endif id='balance' name='balance' @if($edit) value="{{$spare->balance}}" @else value="{{old('balance')}}" @endif>
+            <input type='number' class='form-control' id='balance' name='balance' @if($edit) value="{{$spare->balance}}" @else value="{{old('balance')}}" @endif>
             <small class='form-text text-danger'>@error('balance'){{$message}} @enderror </small>
         </div> 
         <div class='mb-3'>

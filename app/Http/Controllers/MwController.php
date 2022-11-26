@@ -15,9 +15,8 @@ class MwController extends Controller
     function update(Request $req)
     {
         $board = $req['board'];
-        // echo $board;
         file_put_contents('noticeboard.txt', $board);
-        $req->session()->flash('success', 'Noticeboard updated!');
+        $req->session()->flash('success', 'Noticeboard updated');
         return redirect('/');
     }
 }

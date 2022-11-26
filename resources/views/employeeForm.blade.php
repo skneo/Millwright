@@ -14,7 +14,7 @@
         </div>
         <div class='mb-3'>
             <label for='emp_num' class='form-label float-start'>Employee Number</label>
-            <input type='text' class='form-control' id='emp_num' name='emp_num' @if($edit) value="{{$emp->emp_no}}" @else value="{{old('emp_num')}}" @endif>
+            <input type='number' class='form-control' id='emp_num' name='emp_num' @if($edit) value="{{$emp->emp_no}}" @else value="{{old('emp_num')}}" @endif>
             <small class='form-text text-danger'>@error('emp_num'){{$message}}@enderror</small>
         </div>
         <div class='mb-3'>

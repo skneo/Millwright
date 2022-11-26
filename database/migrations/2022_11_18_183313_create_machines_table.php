@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('machines', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('introduction')->default('na');
             $table->integer('quantity');
             $table->date('commisionedDate');
             $table->string('supplier');

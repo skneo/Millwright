@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('emp_no');
+            $table->integer('emp_no');
             $table->string('design');
             $table->date('joinDate');
             $table->integer('mobile');
             $table->string('email');
+            $table->string('rest');
             $table->timestamps();
         });
     }

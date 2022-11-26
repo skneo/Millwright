@@ -8,21 +8,21 @@ use App\Models\Article;
 
 class MachineController extends Controller
 {
-    function all_machines()
+    function all()
     {
         $machines = Machine::all();
         $data = compact('machines');
         return view('allMachines')->with($data);
     }
-    public function show_form()
+    function new()
     {
         $edit = 0;
-        $page_heading = 'Add Asset';
-        $submit_url = '/add-machine';
+        $page_heading = 'Add M&P';
+        $submit_url = '/save-machine';
         $data = compact('edit', 'submit_url', 'page_heading');
         return view('machineForm')->with($data);
     }
-    public function add_machine(Request $request)
+    function save(Request $request)
     {
         $request->validate(
             [
@@ -48,14 +48,14 @@ class MachineController extends Controller
         $machine->commisioningEmployees = $request['commisioningEmployees'];
         $machine->remark = $request['remark'];
         $machine->save();
-        $request->session()->flash('success', $machine->name . ' added!');
+        $request->session()->flash('success', $machine->name . ' added');
         return redirect('/machines');
     }
-    public function edit(Request $request, $id)
+    function edit(Request $request, $id)
     {
         $machine = Machine::find($id);
         if (!is_null($machine)) {
-            $page_heading = "Edit Asset";
+            $page_heading = "Edit M&P";
             $edit = 1;
             $submit_url = '/update-machine/' . $id;
             $data = compact('machine', 'page_heading', 'edit', 'submit_url');
@@ -65,12 +65,12 @@ class MachineController extends Controller
         }
         return redirect('/machines');
     }
-    public function update(Request $request, $id)
+    function update(Request $request, $id)
     {
         $machine = Machine::find($id);
         $request->validate(
             [
-                'machine_name' => 'required',
+                // 'machine_name' => 'required',
                 'quantity' => 'required',
                 'commisionedDate' => 'required',
                 'supplier' => 'required',
@@ -81,7 +81,7 @@ class MachineController extends Controller
                 'remark' => 'required'
             ]
         );
-        $machine->name = $request['machine_name'];
+        // $machine->name = $request['machine_name'];
         $machine->quantity = $request['quantity'];
         $machine->commisionedDate = $request['commisionedDate'];
         $machine->supplier = $request['supplier'];
@@ -91,35 +91,33 @@ class MachineController extends Controller
         $machine->commisioningEmployees = $request['commisioningEmployees'];
         $machine->remark = $request['remark'];
         $machine->save();
-        $request->session()->flash('success', $machine->name . ' updated!');
+        $request->session()->flash('success', $machine->name . ' updated');
         return redirect('/machines');
     }
-    public function introduction($assetName, $id)
+    function introduction($machineName, $id)
     {
-        $asset = Machine::find($id);
-        $assetName = $asset->name;
-        $intro = $asset->introduction;
-        $articles = Article::where('category', $assetName)->get(['id', 'title']);
-        // echo $articles;
-        // die;
-        $data = compact('intro', 'assetName', 'id', 'articles');
-        return view('assetIntro')->with($data);
+        $machine = Machine::find($id);
+        $machineName = $machine->name;
+        $intro = $machine->introduction;
+        $articles = Article::where('category', $machineName)->get(['id', 'title']);
+        $data = compact('intro', 'machineName', 'id', 'articles');
+        return view('machineIntro')->with($data);
     }
-    public function editIntro($assetName, $id)
+    function editIntro($machineName, $id)
     {
-        $asset = Machine::find($id);
-        $asssetName = $asset->name;
-        $intro = $asset->introduction;
-        $data = compact('intro', 'assetName', 'id');
-        return view('editIntro')->with($data);
+        $machine = Machine::find($id);
+        $machineName = $machine->name;
+        $intro = $machine->introduction;
+        $data = compact('intro', 'machineName', 'id');
+        return view('editMachineIntro')->with($data);
     }
-    public function updateIntro(Request $request, $id)
+    function updateIntro(Request $request, $id)
     {
-        $asset = Machine::find($id);
-        $asset->introduction = $request['assetIntro'];
-        $assetName = $asset->name;
-        $asset->save();
-        $request->session()->flash('success', $asset->name . 'introduction updated!');
-        return redirect("/asset-introduction/" . $assetName . "/" . $id);
+        $machine = Machine::find($id);
+        $machine->introduction = $request['machineIntro'];
+        $machineName = $machine->name;
+        $machine->save();
+        $request->session()->flash('success', "Introduction of $machine->name updated");
+        return redirect("/machine-introduction/" . $machineName . "/" . $id);
     }
 }

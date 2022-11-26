@@ -7,21 +7,21 @@ use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
-    public function show_form()
+    function new()
     {
         $edit = 0;
         $page_heading = 'Add Employee';
-        $submit_url = '/add-employee';
+        $submit_url = '/save-employee';
         $data = compact('edit', 'submit_url', 'page_heading');
         return view('employeeForm')->with($data);
     }
-    public function all_employees()
+    function all()
     {
         $employees = Employee::all();
         $data = compact('employees');
         return view('allEmployees')->with($data);
     }
-    public function add_employee(Request $request)
+    function save(Request $request)
     {
         $request->validate(
             [
@@ -43,10 +43,10 @@ class EmployeeController extends Controller
         $employee->email = $request['email'];
         $employee->rest = $request['rest'];
         $employee->save();
-        $request->session()->flash('success', $employee->name . ' added!');
+        $request->session()->flash('success', $employee->name . ' added');
         return redirect('/employees');
     }
-    public function edit(Request $request, $id)
+    function edit(Request $request, $id)
     {
         $emp = Employee::find($id);
         if (!is_null($emp)) {
@@ -60,7 +60,7 @@ class EmployeeController extends Controller
         }
         return redirect('/employees');
     }
-    public function update(Request $request, $id)
+    function update(Request $request, $id)
     {
         $emp = Employee::find($id);
         $request->validate(
@@ -82,15 +82,15 @@ class EmployeeController extends Controller
         $emp->email = $request['email'];
         $emp->rest = $request['rest'];
         $emp->save();
-        $request->session()->flash('success', $emp->name . ' updated!');
+        $request->session()->flash('success', $emp->name . ' updated');
         return redirect('/employees');
     }
-    public function delete(Request $request, $id)
+    function delete(Request $request, $id)
     {
         $emp = Employee::find($id);
         if (!is_null($emp)) {
             $emp->delete();
-            $request->session()->flash('success', $emp->name . ' deleted !');
+            $request->session()->flash('success', $emp->name . ' deleted');
         } else {
             $request->session()->flash('danger', 'No employee found with id ' . $id);
         }

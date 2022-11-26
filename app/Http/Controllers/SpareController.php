@@ -92,4 +92,15 @@ class SpareController extends Controller
         $request->session()->flash('success', "$spare->name updated in $spare->category category");
         return redirect("/spares/all");
     }
+    public function delete(Request $request, $id)
+    {
+        $spare = Spare::find($id);
+        if (!is_null($spare)) {
+            $spare->delete();
+            $request->session()->flash('success', $spare->name . ' deleted !');
+        } else {
+            $request->session()->flash('danger', 'No employee found with id ' . $id);
+        }
+        return redirect('/spares/all');
+    }
 }

@@ -34,7 +34,7 @@
                     <td>{{$spare->remark}}</td>
                     <td>
                         <a href="/edit-spare/{{$spare->id}}" class="btn btn-primary btn-sm">Edit</a>
-                        {{-- <a href="/delete-employee/{{$emp->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete {{$emp->name}} ?')">Delete</a> --}}
+                        <a href="/delete-spare/{{$spare->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete {{$spare->name}} ?')">Delete</a>
                     </td>
                 </tr>
                 @endforeach

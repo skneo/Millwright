@@ -9,8 +9,9 @@
         @csrf
         <div class='mb-3'>
             <label for='machine_name' class='form-label float-start'>M&P Name</label>
-            <input type='text' class='form-control' id='machine_name' name='machine_name' @if($edit) value="{{$machine->name}}" @else value="{{old('machine_name')}}" @endif>
+            <input @if($edit) readonly @endif type='text' class='form-control' id='machine_name' name='machine_name' @if($edit) value="{{$machine->name}}" @else value="{{old('machine_name')}}" @endif>
             <small class='form-text text-danger'>@error('machine_name'){{$message}} @enderror </small>
+            <small class='form-text '>Can not be changed later</small>
         </div>
         <div class='mb-3'>
             <label for='quantity' class='form-label float-start'>M&P Quantity</label>
@@ -23,7 +24,7 @@
             <small class='form-text text-danger'>@error('commisionedDate'){{$message}}@enderror</small>
         </div>
         <div class='mb-3'>
-            <label for='supplier' class='form-label float-start'>OEM/Supplier</label>
+            <label for='supplier' class='form-label float-start'>Supplier Name and Address</label>
             <input type='text' class='form-control' id='supplier' name='supplier' @if($edit) value="{{$machine->supplier}}" @else value="{{old('supplier')}}" @endif>
             <small class='form-text text-danger'>@error('supplier'){{$message}}@enderror</small>
         </div>
@@ -52,7 +53,7 @@
             <input type='text' class='form-control' id='remark' name='remark' @if($edit) value="{{$machine->remark}}" @else value="{{old('remark')}}" @endif>
             <small class='form-text text-danger'>@error('remark') {{$message}} @enderror</small>
         </div>
-        <button type='submit' class='btn btn-primary'>Submit</button>
+        <button type='submit' class='btn btn-primary' onclick="return confirm('Sure to submit ?')">Submit</button>
     </form>
 </div>
 @endsection
