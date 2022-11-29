@@ -48,7 +48,7 @@ Route::get('/edit-fault/{machine}/{id}', [FaultController::class, 'edit']);
 Route::post('/update-fault/{id}', [FaultController::class, 'update']);
 //spares routes
 Route::get('/spares/{category}', [SpareController::class, 'spares']);
-Route::get('/add-spare', [SpareController::class, 'new_spare']);
+Route::get('/add-spare', [SpareController::class, 'new']);
 Route::post('/save-spare', [SpareController::class, 'save']);
 Route::get('/edit-spare/{id}', [SpareController::class, 'edit']);
 Route::post('/update-spare/{id}', [SpareController::class, 'update']);

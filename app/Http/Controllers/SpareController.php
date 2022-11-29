@@ -16,18 +16,18 @@ class SpareController extends Controller
             $spares = Spare::where('category', $category)->get();
         }
         $data = compact('spares', 'category');
-        return view('spares_table')->with($data);
+        return view('sparesTable')->with($data);
     }
-    function new_spare()
+    function new()
     {
         $machines = Machine::all(['name']);
         $edit = 0;
         $page_heading = "Add Spare";
         $submit_url = "/save-spare";
         $data = compact('edit', 'submit_url', 'page_heading', 'machines');
-        return view('spare_form')->with($data);
+        return view('spareForm')->with($data);
     }
-    public function save(Request $request)
+    function save(Request $request)
     {
         $request->validate(
             [
@@ -50,9 +50,13 @@ class SpareController extends Controller
         $spare->remark = $request['remark'];
         $spare->save();
         $request->session()->flash('success', "$spare->name added in $spare->category category");
-        return redirect("/spares/all");
+        if ($spare->category == 'all') {
+            return redirect("/spares/all");
+        } else {
+            return redirect("/spares/$spare->category");
+        }
     }
-    public function edit(Request $request, $id)
+    function edit(Request $request, $id)
     {
         $spare = Spare::find($id);
         if (!is_null($spare)) {
@@ -61,13 +65,13 @@ class SpareController extends Controller
             $edit = 1;
             $submit_url = '/update-spare/' . $id;
             $data = compact('spare', 'page_heading', 'edit', 'submit_url', 'machines');
-            return view('spare_form')->with($data);
+            return view('spareForm')->with($data);
         } else {
             $request->session()->flash('danger', 'No spare found with id ' . $id);
         }
         return redirect("/spares/all");
     }
-    public function update(Request $request, $id)
+    function update(Request $request, $id)
     {
         $spare = Spare::find($id);
         $request->validate(
@@ -90,14 +94,14 @@ class SpareController extends Controller
         $spare->remark = $request['remark'];
         $spare->save();
         $request->session()->flash('success', "$spare->name updated in $spare->category category");
-        return redirect("/spares/all");
+        return redirect('/spares/all');
     }
     public function delete(Request $request, $id)
     {
         $spare = Spare::find($id);
         if (!is_null($spare)) {
             $spare->delete();
-            $request->session()->flash('success', $spare->name . ' deleted !');
+            $request->session()->flash('success', $spare->name . ' deleted');
         } else {
             $request->session()->flash('danger', 'No employee found with id ' . $id);
         }
