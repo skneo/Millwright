@@ -17,8 +17,8 @@ Home
                 <div class="card-body text-center">
                     <h5 class="card-title ">M&Ps</h5>
                     <img src="images/machines.jpg" class="card-img-top" alt="machines">
-                    <p class="card-text text-start mt-3">All assets/M&Ps maintained by Millwright</p>
-                    <a href="/machines" class="btn btn-outline-primary mb-2 w-100">Assets/M&Ps</a><br>
+                    <p class="card-text text-start mt-3">All M&Ps maintained by Millwright</p>
+                    <a href="/machines" class="btn btn-outline-primary mb-2 w-100">M&Ps</a><br>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@ Home
                     <h5 class="card-title">Faults</h5>
                     <img src="images/faults.jpg" class="card-img-top" alt="faults">
                     <p class="card-text text-start mt-3">Record of faults occurred in various M&Ps</p>
-                    <a href="contacts.php" class="btn btn-outline-primary mb-2 w-100">Faults </a><br>
+                    <a href="/all-faults" class="btn btn-outline-primary mb-2 w-100">Faults </a><br>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@ Home
                     <h5 class="card-title ">Spares</h5>
                     <img src="images/spares.png" class="card-img-top" alt="spares">
                     <p class="card-text text-start mt-3">Record of spare parts of M&Ps and their location</p>
-                    <a href="contacts.php" class="btn btn-outline-primary mb-2 w-100">Contacts</a><br>
+                    <a href="/spares/all" class="btn btn-outline-primary mb-2 w-100">Spares</a><br>
                 </div>
             </div>
         </div>
