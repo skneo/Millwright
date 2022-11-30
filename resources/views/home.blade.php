@@ -5,7 +5,9 @@ Home
 @section('body')
 <div class="container my-3">
     <h4>Notice Board</h4> 
+    @if(session()->has('username'))
     <a href="/edit-board" class="btn btn-outline-primary btn-sm">Edit</a>
+    @endif
     <div class="border border-dark px-3 py-3">
         {!!$board!!}
     </div>

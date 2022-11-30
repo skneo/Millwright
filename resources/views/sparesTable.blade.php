@@ -2,7 +2,9 @@
 @section('title') Spares @endsection
 @section('body')
 <div class="container-fluid my-3">
+    @if(session()->has('username'))
     <a href="/add-spare" class="btn btn-primary btn-sm float-end">Add</a>
+    @endif
     <div class="my-3">
         @if ($category=='all')
             <h4>All Spares</h4>
@@ -19,7 +21,9 @@
                     <th>Balance</th>
                     <th>Location</th>
                     <th>Remark</th>
+                    @if(session()->has('username'))
                     <th>Action</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -32,10 +36,12 @@
                     <td>{{$spare->balance}} {{$spare->unit}}</td>
                     <td>{{$spare->location}}</td>
                     <td>{{$spare->remark}}</td>
+                    @if(session()->has('username'))
                     <td>
                         <a href="/edit-spare/{{$spare->id}}" class="btn btn-primary btn-sm">Edit</a>
                         <a href="/delete-spare/{{$spare->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete {{$spare->name}} ?')">Delete</a>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

@@ -2,7 +2,9 @@
 @section('title')All M&Ps @endsection
 @section('body')
 <div class="container-fluid my-3">
+    @if(session()->has('username'))
     <a href="/add-machine" class="btn btn-primary btn-sm float-end">Add</a>
+    @endif
     <div class="my-3">
         <h4>All M&Ps</h4>
         <table id="table_id" class="table-light table table-striped table-bordered w-100">
@@ -18,7 +20,9 @@
                     <th>Installed Location</th>
                     <th>Commisioning Employees</th>
                     <th>Remark</th>
+                    @if(session()->has('username'))
                     <th>Action</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -34,10 +38,12 @@
                     <td>{{$machine->installedLocation}}</td>
                     <td>{{$machine->commisioningEmployees}}</td>
                     <td>{{$machine->remark}}</td>
+                    @if(session()->has('username'))
                     <td>
                         <a href="/edit-machine/{{$machine->id}}" class="btn btn-primary btn-sm">Edit</a>
                         {{-- <a href="/delete-machine/{{$machine->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete {{$machine->name}} ?')">Delete</a> --}}
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

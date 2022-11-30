@@ -2,7 +2,9 @@
 @section('title') All Employees @endsection
 @section('body')
 <div class="container-fluid my-3">
-    <a href="/add-employee" class="btn btn-primary btn-sm float-end">Add</a>
+    @if(session()->has('username'))
+        <a href="/add-employee" class="btn btn-primary btn-sm float-end">Add</a>
+    @endif
     <div class="my-3">
         <h4>All Employees</h4>
         <table id="table_id" class="table-light table table-striped table-bordered w-100">
@@ -16,7 +18,9 @@
                     <th>Mobile</th>
                     <th>Email</th>
                     <th>Rest</th>
+                    @if(session()->has('username'))
                     <th>Action</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -30,10 +34,12 @@
                     <td>{{$emp->mobile}}</td>
                     <td>{{$emp->email}}</td>
                     <td>{{$emp->rest}}</td>
+                    @if(session()->has('username'))
                     <td>
                         <a href="/edit-employee/{{$emp->id}}" class="btn btn-primary btn-sm">Edit</a>
                         <a href="/delete-employee/{{$emp->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete {{$emp->name}} ?')">Delete</a>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

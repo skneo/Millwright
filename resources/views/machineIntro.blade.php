@@ -13,12 +13,16 @@
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
             <h4>Introduction of {{$machineName}}</h4>
+            @if(session()->has('username'))
             <a href="/edit-introduction/{{$machineName}}/{{$id}}" class="btn btn-outline-primary btn-sm">Edit Intro</a>
+            @endif
             {!!$intro!!}
         </div>
         <div class="col-md-3 border py-3">
             <h5>Latest articles on {{$machineName}}</h5>
+            @if(session()->has('username'))
             <a href="/new-article/{{$machineName}}" class="btn btn-outline-primary btn-sm">New</a><br>
+            @endif
             <ul>
             @foreach ($articles as $article)
                <li><a href="/article/{{str_replace(' ', '-', $article->title)}}/{{$article->id}}">{{$article->title}}</a> </li> 

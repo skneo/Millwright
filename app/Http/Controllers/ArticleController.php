@@ -42,7 +42,7 @@ class ArticleController extends Controller
             $articles = Article::latest()->get();
             $title = "All articles";
         }
-        $data = compact('articles', 'title');
+        $data = compact('articles', 'title', 'category');
         return view('allArticles')->with($data);
     }
     function showArticle($title, $id)

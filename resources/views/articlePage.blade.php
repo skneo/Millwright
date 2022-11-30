@@ -5,9 +5,12 @@
 @section('body')
     <div class="container my-3">
         <h3>{{$article->title}}</h3>
+        <b>Category:</b> {{$article->category}},
         <small class='text-muted'>Updated on {{$article->updated_at}}</small>
+        @if(session()->has('username'))
         <br><a href="/edit-article/{{str_replace(' ','-',$article->title)}}/{{$article->id}}" class="btn btn-outline-primary btn-sm">Edit</a><br>
-        <b>Category:</b> {{$article->category}}
+        @endif
+        
         {!!$article->body!!}
     </div>
 @endsection

@@ -41,15 +41,19 @@
                 <input class="form-control me-2" name='search' type="search" placeholder="Search articles" aria-label="Search">
                 <button class="btn btn-primary me-2" type="submit">Search</button>
             </form>
-            <div class='btn-group '>
-                <button id='userMenu' type='button' class='btn btn-primary dropdown-toggle ' data-bs-toggle='dropdown' aria-expanded='false' value=''>
-                Millwright
-                </button>
-                <ul class='dropdown-menu dropdown-menu-lg-end'>
-                <li><a class='dropdown-item ' href='/change-passwoord'>Change Password</a></li>
-                <li><a class='dropdown-item ' href='/logout'>Logout</a></li>
-                </ul>
-            </div>
+            @if(session()->has('username'))
+                <div class='btn-group '>
+                    <button id='userMenu' type='button' class='btn btn-primary dropdown-toggle ' data-bs-toggle='dropdown' aria-expanded='false' value=''>
+                    {{session('username')}}
+                    </button>
+                    <ul class='dropdown-menu dropdown-menu-lg-end'>
+                    <li><a class='dropdown-item ' href='/change-password'>Change Password</a></li>
+                    <li><a class='dropdown-item ' href='/logout'>Logout</a></li>
+                    </ul>
+                </div>
+            @else 
+                <a href="/login" class="btn btn-primary">Login</a>
+            @endif
         </div>
     </div>
 </nav>
