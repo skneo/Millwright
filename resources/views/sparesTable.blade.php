@@ -22,7 +22,7 @@
                     <th>Location</th>
                     <th>Remark</th>
                     @if(session()->has('username'))
-                    <th>Action</th>
+                    <th style="min-width: 90px">Action</th>
                     @endif
                 </tr>
             </thead>

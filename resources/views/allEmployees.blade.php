@@ -19,7 +19,7 @@
                     <th>Email</th>
                     <th>Rest</th>
                     @if(session()->has('username'))
-                    <th>Action</th>
+                    <th style="min-width: 90px">Action</th>
                     @endif
                 </tr>
             </thead>

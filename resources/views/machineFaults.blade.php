@@ -14,9 +14,9 @@
                     <th>Occured On</th>
                     {{-- <th>M&P Name</th> --}}
                     <th>Sub-Category</th>
-                    <th>Fault</th>
+                    <th style="min-width: 200px">Fault</th>
                     <th>Rectification Date</th>
-                    <th>Rectification</th>
+                    <th style="min-width: 200px">Rectification</th>
                     <th>Spares Used</th>
                     <th>Remark</th>
                     @if(session()->has('username'))
