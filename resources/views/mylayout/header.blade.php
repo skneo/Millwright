@@ -1,5 +1,5 @@
 <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
-    <div class='container-fluid'>
+    <div class='container-fluid text-center'>
         <a class='navbar-brand' href='/'>Millwright</a>
         <!-- <img src='images/logo.png' alt='BrandName' width='30' height='30'> -->
         <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
