@@ -25,7 +25,7 @@
 
         <button type='submit' class='btn btn-primary'>Submit</button>
     </form>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/e6aiwxkshssibfqngwx0wxkxnemniy9m7h9x7143hhate0zf/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
         tinymce.init({

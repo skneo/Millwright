@@ -2,7 +2,7 @@
 @section('title') Edit {{$machineName}} Introduction @endsection
 @section('body')
 <div class="container my-3">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/e6aiwxkshssibfqngwx0wxkxnemniy9m7h9x7143hhate0zf/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <h4>Edit introduction of {{$machineName}}</h4>
     <form method='POST' action='/update-introduction/{{$id}}'>
         @csrf
