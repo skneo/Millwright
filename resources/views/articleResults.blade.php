@@ -13,7 +13,7 @@
     @endif
     <ul>
     @foreach ($articles as $article)
-        <li><a class="fs-5" href="/article/{{str_replace(' ','-',$article->title)}}/{{$article->id}}">{{$article->title}}</a></li>
+        <li><a class="fs-5 text-decoration-none" href="/article/{{str_replace(' ','-',$article->title)}}/{{$article->id}}">{{$article->title}}</a></li>
     @endforeach
     </ul>
 </div>
