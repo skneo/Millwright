@@ -14,10 +14,10 @@
         <a href="/new-article/General" class="btn btn-outline-primary btn-sm mx-2 mt-2">New</a>
         @endif
     @endif
-    <ul>
+    <ol>
     @foreach ($articles as $article)
-        <li><a class="fs-4" href="/article/{{str_replace(' ','-',$article->title)}}/{{$article->id}}">{{$article->title}}</a></li>
+        <li><a class="fs-5" href="/article/{{str_replace(' ','-',$article->title)}}/{{$article->id}}">{{$article->title}}</a></li>
     @endforeach
-    </ul>
+    </ol>
 </div>
 @endsection

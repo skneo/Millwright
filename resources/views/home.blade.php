@@ -48,7 +48,7 @@ Home
                     <h5 class="card-title ">Articles</h5>
                     <img src="images/articles.jpg" class="card-img-top" alt="articles">
                     <p class="card-text text-start mt-3">Articles on M&Ps, their parts and fault troubleshooting</p>
-                    <a href="/employees" class="btn btn-outline-primary mb-2 w-100">Employees</a><br>
+                    <a href="/all-articles" class="btn btn-outline-primary mb-2 w-100">Articles</a><br>
                 </div>
             </div>
         </div>

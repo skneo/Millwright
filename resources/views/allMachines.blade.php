@@ -11,10 +11,10 @@
             <thead>
                 <tr>
                     <th>SN</th>
-                    <th>M&P Name</th>
+                    <th style="min-width: 120px">M&P Name</th>
                     <th>Qty</th>
                     <th>Commisioned Date</th>
-                    <th>Supplier Name and Address</th>
+                    <th style="min-width: 120px">Supplier Name and Address</th>
                     <th>Price</th>
                     <th>DMRC PO Number</th>
                     <th>Installed Location</th>
