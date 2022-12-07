@@ -8,11 +8,7 @@
             <a href="/faults?machine={{$machineName}}" class="btn btn-outline-primary btn-sm ">Faults</a>
             <a href="/spares/{{$machineName}}" class="btn btn-outline-primary btn-sm mx-2">Spares</a>
             <a href="/all-articles/{{$machineName}}" class="btn btn-outline-primary btn-sm ">Articles</a>
-            <form class="d-flex mt-2" metho='get' action='/articles/'>
-                <input class="form-control me-2" name='search' type="search" placeholder="Search articles" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-            <h4>Introduction of {{$machineName}}</h4>
+            <h4 class="mt-3">Introduction of {{$machineName}}</h4>
             @if(session()->has('username'))
             <a href="/edit-introduction/{{$machineName}}/{{$id}}" class="btn btn-outline-primary btn-sm">Edit Intro</a>
             @endif

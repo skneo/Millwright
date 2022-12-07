@@ -37,7 +37,7 @@
                 </li> --}}
                 
             </ul>
-            <form class="d-flex " metho='get' action='/articles/'>
+            <form class="d-flex mb-2 mb-md-0" metho='get' action='/articles/'>
                 <input class="form-control me-2" name='search' type="search" placeholder="Search articles" aria-label="Search">
                 <button class="btn btn-primary me-2" type="submit">Search</button>
             </form>
