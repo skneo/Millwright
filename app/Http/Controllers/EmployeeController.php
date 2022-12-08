@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     }
     function all()
     {
-        $employees = Employee::all();
+        $employees = Employee::orderBy('emp_no', 'asc')->get();;
         $data = compact('employees');
         return view('allEmployees')->with($data);
     }

@@ -13,12 +13,12 @@
                     <th>SN</th>
                     <th>Employee Name</th>
                     <th>Employee Number</th>
+                    <th>Rest</th>
+                    @if(session()->has('username'))
                     <th>Designation</th>
                     <th>DMRC Join Date</th>
                     <th>Mobile</th>
                     <th>Email</th>
-                    <th>Rest</th>
-                    @if(session()->has('username'))
                     <th style="min-width: 90px">Action</th>
                     @endif
                 </tr>
@@ -29,12 +29,12 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$emp->name}}</td>
                     <td>{{$emp->emp_no}}</td>
+                    <td>{{$emp->rest}}</td>
+                    @if(session()->has('username'))
                     <td>{{$emp->design}}</td>
                     <td>{{$emp->joinDate}}</td>
                     <td>{{$emp->mobile}}</td>
                     <td>{{$emp->email}}</td>
-                    <td>{{$emp->rest}}</td>
-                    @if(session()->has('username'))
                     <td>
                         <a href="/edit-employee/{{$emp->id}}" class="btn btn-primary btn-sm">Edit</a>
                         <a href="/delete-employee/{{$emp->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete {{$emp->name}} ?')">Delete</a>
@@ -51,7 +51,8 @@
         <script>
             $(document).ready(function() {
                 $('#table_id').DataTable({
-                    "scrollX": true
+                    "scrollX": true,
+                    "pageLength": 25
                 });
             });
         </script>
