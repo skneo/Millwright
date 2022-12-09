@@ -31,7 +31,7 @@
                 <input onkeyup='check();' required type="password" class="form-control" id="pwd2" name="pwd2">
                 <span id='message' class="float-start"></span><br>
             </div>
-            <button type="submit" id="changePwdBtn" class="btn btn-success">Submit</button>
+            <button type="submit" disabled id="changePwdBtn" class="btn btn-success">Submit</button>
         </form>
     </center>
 @endsection

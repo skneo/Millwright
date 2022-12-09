@@ -17,7 +17,8 @@
         </div>
         <div class="mb-3 ">
             <label for="password" class="form-label float-start">Password</label>
-            <input type="password" name="password" id="password" class="my-3 form-control" placeholder="Enter password" required>
+            <input type="password" name="password" id="password" class="mt-3 form-control" placeholder="Enter password" required>
+            <a href="/forgot-password" class='float-start mt-1'>Forget Password</a><br>
         </div>
         <button type="submit" class="btn btn-primary px-5 ">Login</button>
     </form>

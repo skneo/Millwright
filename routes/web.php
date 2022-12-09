@@ -70,6 +70,10 @@ Route::middleware([UserAuth::class])->group(function () {
 //user routes
 Route::get('/login', [UserController::class, 'showLoginForm']);
 Route::post('/login', [UserController::class, 'login']);
+Route::view('/forgot-password', 'forgotPassword');
+Route::post('/request-otp', [UserController::class, 'requestOTP']);
+Route::view('/reset-password', 'resetPassword');
+Route::post('/reset-password', [UserController::class, 'resetPassword']);
 Route::middleware([UserAuth::class])->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
     Route::view('/change-password', 'changePassword');

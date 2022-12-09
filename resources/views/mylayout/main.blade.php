@@ -13,7 +13,7 @@
     @include('mylayout.header')
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
     @if(Session::has($msg))
-        <div class="alert alert-{{$msg}}" role="alert">
+        <div class="alert alert-{{$msg}} py-2" role="alert">
             {{Session::get($msg)}}
         </div>
     @endif
