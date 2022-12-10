@@ -71,7 +71,7 @@ class UserController extends Controller
                 CURLOPT_TIMEOUT => 30,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_POSTFIELDS => "{\r\n    \"personalizations\": [\r\n        {\r\n            \"to\": [\r\n                {\r\n                    \"email\": \"$email\"\r\n                }\r\n            ],\r\n            \"subject\": \"OTP to reset password on Millwright Portal\"\r\n        }\r\n    ],\r\n    \"from\": {\r\n        \"email\": \"knockdeveloper@gmail.com\"\r\n    },\r\n    \"content\": [\r\n        {\r\n            \"type\": \"text/plain\",\r\n            \"value\": \"OTP to reset password at Millwright portal is $otp\"\r\n        }\r\n    ]\r\n}",
+                CURLOPT_POSTFIELDS => "{\r\n    \"personalizations\": [\r\n        {\r\n            \"to\": [\r\n                {\r\n                    \"email\": \"$email\"\r\n                }\r\n            ],\r\n            \"subject\": \"OTP to reset password at Millwright Portal\"\r\n        }\r\n    ],\r\n    \"from\": {\r\n        \"email\": \"knockdeveloper@gmail.com\"\r\n    },\r\n    \"content\": [\r\n        {\r\n            \"type\": \"text/plain\",\r\n            \"value\": \"OTP to reset password at Millwright portal is $otp\"\r\n        }\r\n    ]\r\n}",
                 CURLOPT_HTTPHEADER => [
                     "X-RapidAPI-Host: rapidprod-sendgrid-v1.p.rapidapi.com",
                     "X-RapidAPI-Key: d2cc0cd025msh8db8663d3a919cdp136023jsnf1a181cdfff0",
@@ -103,8 +103,12 @@ class UserController extends Controller
             $user->password = $req['pwd1'];
             $user->save();
             $req->session()->flash('success', "Password changed");
+            session()->forget('otp');
+            session()->forget('user_id');
             return redirect('/login');
         } else {
+            session()->forget('otp');
+            session()->forget('user_id');
             $req->session()->flash('danger', 'Wrong OTP entered');
             return redirect('/login');
         }

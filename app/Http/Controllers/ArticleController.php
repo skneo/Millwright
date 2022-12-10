@@ -28,10 +28,9 @@ class ArticleController extends Controller
         $article->category = $request['category'];
         $article->title = $request['title'];
         $article->body = $request['body'];
-
         $article->save();
         $request->session()->flash('success', $article->title . ' saved');
-        return redirect('/all-articles');
+        return redirect("/article/$article->title/$article->id");
     }
     function all($category = null)
     {
