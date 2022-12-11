@@ -59,8 +59,8 @@ Route::middleware([UserAuth::class])->group(function () {
     Route::post('/update-fault/{id}', [FaultController::class, 'update']);
 });
 //spares routes
-Route::get('/spares/{category}', [SpareController::class, 'spares']);
 Route::middleware([UserAuth::class])->group(function () {
+    Route::get('/spares/{category}', [SpareController::class, 'spares']);
     Route::get('/add-spare', [SpareController::class, 'new']);
     Route::post('/save-spare', [SpareController::class, 'save']);
     Route::get('/edit-spare/{id}', [SpareController::class, 'edit']);
