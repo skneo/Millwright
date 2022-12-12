@@ -47,8 +47,12 @@ class ArticleController extends Controller
     function showArticle($title, $id)
     {
         $article = Article::find($id);
-        $data = compact('article');
-        return  view('articlePage')->with($data);
+        if (!is_null($article)) {
+            $data = compact('article');
+            return  view('articlePage')->with($data);
+        } else {
+            return redirect('/all-articles');
+        }
     }
     function edit(Request $request, $title, $id)
     {

@@ -59,9 +59,7 @@ class UserController extends Controller
             session(['otp' => $otp]);
             session(['user_id' => $user->id]);
             //emailing otp with rapid api
-
             $curl = curl_init();
-
             curl_setopt_array($curl, [
                 CURLOPT_URL => "https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send",
                 CURLOPT_RETURNTRANSFER => true,
@@ -78,19 +76,18 @@ class UserController extends Controller
                     "content-type: application/json"
                 ],
             ]);
-
             $response = curl_exec($curl);
             $err = curl_error($curl);
-
             curl_close($curl);
-
             if ($err) {
-                echo "cURL Error #:" . $err;
+                // echo "cURL Error #:" . $err;
+                $req->session()->flash('danger', 'Error occurred while sending OTP to ' . $email);
+                return redirect('/login');
             } else {
-                echo $response;
+                // echo $response;
+                $req->session()->flash('success', "OTP sent to $email");
+                return redirect('/reset-password');
             }
-            $req->session()->flash('success', "OTP sent to $email");
-            return redirect('/reset-password');
         } else {
             $req->session()->flash('danger', 'No registered user with email ' . $email);
             return redirect('/login');

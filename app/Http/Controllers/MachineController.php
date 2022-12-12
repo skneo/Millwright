@@ -97,19 +97,27 @@ class MachineController extends Controller
     function introduction($machineName, $id)
     {
         $machine = Machine::find($id);
-        $machineName = $machine->name;
-        $intro = $machine->introduction;
-        $articles = Article::where('category', $machineName)->latest()->take(10)->get(['id', 'title']);
-        $data = compact('intro', 'machineName', 'id', 'articles');
-        return view('machineIntro')->with($data);
+        if (!is_null($machine)) {
+            $machineName = $machine->name;
+            $intro = $machine->introduction;
+            $articles = Article::where('category', $machineName)->latest()->take(10)->get(['id', 'title']);
+            $data = compact('intro', 'machineName', 'id', 'articles');
+            return view('machineIntro')->with($data);
+        } else {
+            return redirect('/machines');
+        }
     }
     function editIntro($machineName, $id)
     {
         $machine = Machine::find($id);
-        $machineName = $machine->name;
-        $intro = $machine->introduction;
-        $data = compact('intro', 'machineName', 'id');
-        return view('editMachineIntro')->with($data);
+        if (!is_null($machine)) {
+            $machineName = $machine->name;
+            $intro = $machine->introduction;
+            $data = compact('intro', 'machineName', 'id');
+            return view('editMachineIntro')->with($data);
+        } else {
+            return redirect('/machines');
+        }
     }
     function updateIntro(Request $request, $id)
     {

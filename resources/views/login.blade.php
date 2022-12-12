@@ -16,7 +16,7 @@
             <input type="text" name="email" id="email" class="mt-3 form-control" placeholder="Enter email" required>
         </div>
         <div class="mb-3 ">
-            <label for="password" class="form-label float-start">Password </label><span><a href="/forgot-password" class='float-end text-muted text-decoration-none'>Forgot Password?</a></span>
+            <label for="password" class="form-label float-start">Password </label><span><a href="/forgot-password" class='float-end text-muted text-decoration-none fst-italic'>Forgot Password?</a></span>
             <input type="password" name="password" id="password" class="mt-3 form-control" placeholder="Enter password" required>
         </div>
         <button type="submit" class="btn btn-primary px-5 ">Login</button>
