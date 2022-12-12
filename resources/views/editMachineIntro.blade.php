@@ -36,24 +36,27 @@
                     value: 'http://www.moxiecode.com'
                 }
             ],
-            image_list: [{
-                    title: 'My page 1',
-                    value: 'https://www.tiny.cloud'
+            // image_list: [{
+            //         title: 'My page 1',
+            //         value: 'https://www.tiny.cloud'
+            //     },
+            //     {
+            //         title: 'My page 2',
+            //         value: 'http://www.moxiecode.com'
+            //     }
+            // ],
+            image_class_list: [{
+                    title: 'Responsive',
+                    value: 'img-fluid'
                 },
                 {
-                    title: 'My page 2',
-                    value: 'http://www.moxiecode.com'
-                }
-            ],
-            image_class_list: [{
                     title: 'None',
                     value: ''
-                },
-                {
-                    title: 'Some class',
-                    value: 'class-name'
                 }
             ],
+            table_default_attributes: {
+                class: 'table table-bordered'
+            },
             importcss_append: true,
             file_picker_callback: function(callback, value, meta) {
                 /* Provide file and text for the link dialog */
