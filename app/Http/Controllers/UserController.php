@@ -22,7 +22,7 @@ class UserController extends Controller
         $users = User::where('email', $email)->get();
         if (count($users) == 1) {
             $user = $users[0];
-            if ($user->password == $password) {
+            if ($user->password == md5($password)) {
                 session(['username' => $user->name]);
                 session(['user_id' => $user->id]);
                 return redirect('/');
@@ -44,10 +44,15 @@ class UserController extends Controller
     function updatePassword(Request $req)
     {
         $user = User::find(session('user_id'));
-        $user->password = $req['pwd1'];
-        $user->save();
-        $req->session()->flash('success', "Password changed");
-        return redirect('/');
+        if ($user->password == md5($req['old_pwd'])) {
+            $user->password = md5($req['pwd1']);
+            $user->save();
+            $req->session()->flash('success', "Password changed");
+            return redirect('/logout');
+        } else {
+            $req->session()->flash('danger', 'Incorrect old password');
+            return redirect('/change-password');
+        }
     }
     function requestOTP(Request $req)
     {
@@ -97,7 +102,7 @@ class UserController extends Controller
     {
         if (session('otp') == $req['otp']) {
             $user = User::find(session('user_id'));
-            $user->password = $req['pwd1'];
+            $user->password = md5($req['pwd1']);
             $user->save();
             $req->session()->flash('success', "Password changed");
             session()->forget('otp');

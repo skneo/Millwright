@@ -23,11 +23,15 @@
         <form method="POST" class="mt-3" style="width: 300px" action="/update-password">
             @csrf
             <div class=" mb-3">
-                <label for="pwd1" class="form-label float-start">Type new password</label>
+                <label for="old_pwd" class="form-label float-start">Old Password</label>
+                <input required type="password" class="form-control" id="old_pwd" name="old_pwd">
+            </div>
+            <div class=" mb-3">
+                <label for="pwd1" class="form-label float-start">Enter new password</label>
                 <input onkeyup='check();' required type="password" class="form-control" id="pwd1" name="pwd1">
             </div>
             <div class="mb-3">
-                <label for="pwd2" class="form-label float-start">Type new password again</label>
+                <label for="pwd2" class="form-label float-start">Enter new password again</label>
                 <input onkeyup='check();' required type="password" class="form-control" id="pwd2" name="pwd2">
                 <span id='message' class="float-start"></span><br>
             </div>
