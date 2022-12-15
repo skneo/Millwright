@@ -30,7 +30,7 @@ class ArticleController extends Controller
         $article->body = $request['body'];
         $article->save();
         $request->session()->flash('success', $article->title . ' saved');
-        return redirect("/article/$article->title/$article->id");
+        return redirect("/article/$article->id/$article->title");
     }
     function all($category = null)
     {
@@ -44,7 +44,7 @@ class ArticleController extends Controller
         $data = compact('articles', 'title', 'category');
         return view('allArticles')->with($data);
     }
-    function showArticle($title, $id)
+    function showArticle($id, $title)
     {
         $article = Article::find($id);
         if (!is_null($article)) {
@@ -54,7 +54,7 @@ class ArticleController extends Controller
             return redirect('/all-articles');
         }
     }
-    function edit(Request $request, $title, $id)
+    function edit(Request $request, $id, $title)
     {
         $article = Article::find($id);
         if (!is_null($article)) {
@@ -84,7 +84,7 @@ class ArticleController extends Controller
 
         $article->save();
         $request->session()->flash('success', $article->title . ' updated');
-        return redirect("/article/" . str_replace(' ', '-', $article->title) . "/$article->id");
+        return redirect("/article/$article->id/" . str_replace(' ', '-', $article->title));
     }
     function search(Request $req)
     {

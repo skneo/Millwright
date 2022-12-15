@@ -21,7 +21,7 @@
             @endif
             <ul>
             @foreach ($articles as $article)
-               <li><a href="/article/{{str_replace(' ', '-', $article->title)}}/{{$article->id}}">{{$article->title}}</a> </li> 
+               <li><a href="/article/{{$article->id}}/{{str_replace(' ', '-', $article->title)}}">{{$article->title}}</a> </li> 
             @endforeach
             </ul>
         </div>

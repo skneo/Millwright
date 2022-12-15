@@ -41,12 +41,12 @@ Route::middleware([UserAuth::class])->group(function () {
 });
 //article routes
 Route::get('/all-articles/{category?}', [ArticleController::class, 'all']);
-Route::get('/article/{title}/{id}', [ArticleController::class, 'showArticle']);
+Route::get('/article/{id}/{title}', [ArticleController::class, 'showArticle']);
 Route::get('/articles/', [ArticleController::class, 'search']);
 Route::middleware([UserAuth::class])->group(function () {
     Route::get('/new-article/{category}', [ArticleController::class, 'new']);
     Route::post('/save-article', [ArticleController::class, 'save']);
-    Route::get('/edit-article/{title}/{id}', [ArticleController::class, 'edit']);
+    Route::get('/edit-article/{id}/{title}', [ArticleController::class, 'edit']);
     Route::post('/update-article/{id}', [ArticleController::class, 'update']);
 });
 //faults routes
