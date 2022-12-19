@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Machine;
 
 class ArticleController extends Controller
 {
@@ -37,18 +38,21 @@ class ArticleController extends Controller
         if ($category) {
             $articles = Article::where('category', $category)->latest()->get(['id', 'title']);
             $title = "All articles on $category";
+            $machines = Machine::all(['name']);
         } else {
             $articles = Article::latest()->get();
             $title = "All articles";
+            $machines = Machine::all(['name']);
         }
-        $data = compact('articles', 'title', 'category');
+        $data = compact('articles', 'title', 'category', 'machines');
         return view('allArticles')->with($data);
     }
     function showArticle($id, $title)
     {
         $article = Article::find($id);
         if (!is_null($article)) {
-            $data = compact('article');
+            $articles = Article::where('category', $article->category)->latest()->take(10)->get(['id', 'title']);
+            $data = compact('article', 'articles');
             return  view('articlePage')->with($data);
         } else {
             return redirect('/all-articles');

@@ -58,9 +58,9 @@
     </div>
 </nav>
 <style>
-    /* body {
+    body {
         background-color: rgb(218, 225, 233);
-    } */
+    }
 
     @media only screen and (min-width: 960px) {
         .navbar .navbar-nav .nav-item .nav-link {
