@@ -100,7 +100,7 @@ class MachineController extends Controller
         if (!is_null($machine)) {
             $machineName = $machine->name;
             $intro = $machine->introduction;
-            $articles = Article::where('category', $machineName)->latest()->take(10)->get(['id', 'title']);
+            $articles = Article::where('category', $machineName)->latest()->take(5)->get(['id', 'title']);
             $data = compact('intro', 'machineName', 'id', 'articles');
             return view('machineIntro')->with($data);
         } else {

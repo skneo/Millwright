@@ -38,20 +38,20 @@ class ArticleController extends Controller
         if ($category) {
             $articles = Article::where('category', $category)->latest()->get(['id', 'title']);
             $title = "All articles on $category";
-            $machines = Machine::all(['name']);
         } else {
             $articles = Article::latest()->get();
             $title = "All articles";
-            $machines = Machine::all(['name']);
         }
-        $data = compact('articles', 'title', 'category', 'machines');
+        $machines = Machine::all(['name']);
+        $latestArticles = Article::latest()->take(5)->get(['id', 'title']);
+        $data = compact('articles', 'title', 'category', 'machines', 'latestArticles');
         return view('allArticles')->with($data);
     }
     function showArticle($id, $title)
     {
         $article = Article::find($id);
         if (!is_null($article)) {
-            $articles = Article::where('category', $article->category)->latest()->take(10)->get(['id', 'title']);
+            $articles = Article::where('category', $article->category)->latest()->take(5)->get(['id', 'title']);
             $machines = Machine::all(['name']);
             $data = compact('article', 'articles', 'machines');
             return  view('articlePage')->with($data);
@@ -102,7 +102,9 @@ class ArticleController extends Controller
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('body', 'LIKE', "%{$search}%")
             ->get(['id', 'title']);
-        $data = compact('articles', 'search');
+        $latestArticles = Article::latest()->take(5)->get(['id', 'title']);
+        $machines = Machine::all(['name']);
+        $data = compact('articles', 'search', 'latestArticles', 'machines');
         return view('articleResults')->with($data);
     }
 }

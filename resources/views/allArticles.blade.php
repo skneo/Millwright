@@ -26,7 +26,15 @@
         </div>
         <div class="col-md-3" >
             <div class="border p-3" style="border-radius: 10px; background-color:#eee">
-                <h3>Categories</h3>
+                <h5>Latest articles</h5>
+                <ul>
+                    @foreach ($latestArticles as $article)
+                        <li><a class="text-decoration-none" href="/article/{{$article->id}}/{{str_replace(' ', '-', $article->title)}}">{{$article->title}}</a> </li> 
+                    @endforeach
+                </ul>
+            </div>
+            <div class="border p-3 my-3" style="border-radius: 10px; background-color:#eee">
+                <h5>Categories</h5>
                 <ul>
                     <li><a href="/all-articles/General" class="text-decoration-none fs-5">General</a></li>
                     @foreach ($machines as $machine)
