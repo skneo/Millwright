@@ -25,6 +25,16 @@
                         @endforeach
                     </ul>
                 </div>
+                <div class="border p-3 my-3" style="border-radius: 10px; background-color:#eee">
+                    <h5>Categories</h5>
+                    <ul>
+                        <li><a href="/all-articles/General" class="text-decoration-none fs-5">General</a></li>
+                        @foreach ($machines as $machine)
+                            <li><a href="/all-articles/{{$machine->name}}" class="text-decoration-none fs-5">{{$machine->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
+        </div>
     </div>
 @endsection

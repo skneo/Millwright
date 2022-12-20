@@ -52,7 +52,8 @@ class ArticleController extends Controller
         $article = Article::find($id);
         if (!is_null($article)) {
             $articles = Article::where('category', $article->category)->latest()->take(10)->get(['id', 'title']);
-            $data = compact('article', 'articles');
+            $machines = Machine::all(['name']);
+            $data = compact('article', 'articles', 'machines');
             return  view('articlePage')->with($data);
         } else {
             return redirect('/all-articles');
